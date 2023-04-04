@@ -75,6 +75,8 @@
           font-family: monospace;
           overflow: auto;
           text-align: left;
+          max-width: 90%;
+         word-wrap: break-word;
         }
         
          .copy-button {
@@ -106,7 +108,7 @@
 			<sup>1</sup><b>Georgia Institute of Technology</b>,
 			<sup>2</sup><b>Samsung Research America</b>
 		</p>
-		<a href="https://jamessealesmith.github.io/" class="arxiv-link">paper</a>
+		<a href="https://arxiv.org/list/cs/recent" class="arxiv-link">paper</a>
 	</header>
 	<main>
 	    <figure>
@@ -128,7 +130,7 @@
 		
 		<h2>Results</h2>
 		
-	<figure>
+		<figure>
 		<img src="figures/celeb-a_results.jpg" width="85%">
 		<figcaption>Qualitative results of continual customization using the Celeb-A HQ data. Results are shown for three concepts from the learning sequence sampled after training ten concepts sequentially.</figcaption>
         </figure>
@@ -148,25 +150,40 @@
           <div class="card-body">
             <div class="bibtex-box">
               <pre id="bibtex-text">
-                @article{smith2022example,
-                  title={An Example Research Paper},
-                  author={Smith, James and Lee, John and Kim, Sarah and Patel, Ravi and Nguyen, Minh},
-                  journal={Journal of Example Research},
-                  year={2022}
+                @article{smith2023continualdiffusion,
+                  title={Continual Diffusion: Continual Customization of Text-to-Image Diffusion with C-LoRA},
+                  author={Smith, James Seale and Hsu, Yen-Chang and Zhang, Lingyu and Hua, Ting and Kira, Zsolt and Shen, Yilin and Jin, Hongxia},
+                  journal={arXiv preprint arXiv:},
+                  year={2023}
                 }
               </pre>
             </div>
-            <button class="btn btn-primary copy-button" data-clipboard-target="#bibtex-text">
-              Copy BibTeX
-            </button>
+            <!--<button class="btn btn-primary copy-button" data-clipboard-target="#bibtex-text">-->
+            <!--  Copy BibTeX-->
+            <!--</button>-->
+            <button class="btn btn-primary copy-button" onclick="copyToClipboard()">Copy BibTeX</button>
+        	<!-- existing code -->
+        	<script>
+        		function copyToClipboard() {
+        			var bibtexText = "@article{smith2023continualdiffusion,\n  title={Continual Diffusion: Continual Customization of Text-to-Image Diffusion with C-LoRA},\n  author={Smith, James Seale and Hsu, Yen-Chang and Zhang, Lingyu and Hua, Ting and Kira, Zsolt and Shen, Yilin and Jin, Hongxia},\n  journal={arXiv preprint arXiv:},\n  year={2023}\n}";
+        			var textarea = document.createElement("textarea");
+        			textarea.textContent = bibtexText;
+        			document.body.appendChild(textarea);
+        			textarea.select();
+        			document.execCommand("copy");
+        			document.body.removeChild(textarea);
+        			alert("BibTeX text has been copied to clipboard!");
+        		}
+        	</script>
           </div>
         </div>
       </div>
     </div>
   </div>
+  
 </section>
 
-
+    
 	</main>
 </body>
 </html>
