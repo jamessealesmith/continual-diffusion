@@ -1,55 +1,172 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Title of the Paper</title>
+	<title>Continual Diffusion</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
+    	h1 {text-align: center;}
+        p {text-align: center;}
+        h4 {text-align: justify;font-weight:normal;}
+        div {text-align: center;}
 		body {
 			font-family: Arial, sans-serif;
-			margin: 0;
+			margin: 0 auto;
 			padding: 0;
+			width:800px;
+			background-color: #f8fbff; /* light gray color */
 		}
 		h1, h2, h3 {
 			margin: 10px 0;
+			text-align: center;
+			width:800px;
 		}
-		img {
-			max-width: 100%;
-			height: auto;
-			margin: 10px 0;
+		.container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 0 20px;
+          box-sizing: border-box;
+        }
+		a.author {
+			color: teal;
+			font-weight: bold;
 		}
+	    img {
+          display: block;
+          margin: 0 auto;
+        }
+        figcaption {
+          font-size: 14px;
+          text-align: justify;
+        }
+        .my-container figcaption {
+          font-size: 14px;
+          text-align: justify;
+        }
+        
+		.arxiv-link {
+			display: block;
+			text-align: center;
+			font-size: 14px;
+			font-weight: bold;
+			color: darkred;
+			text-decoration: none;
+			padding: 5px 0;
+			background-color: #e6f0ff; /* light blue color */
+			border-radius: 10px;
+			box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+			margin: 5px auto;
+			max-width: 50px;
+		}
+		.arxiv-link:hover {
+			background-color: #cde1ff; /* darker blue color on hover */
+			box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+		}
+		.bibtex-section {
+          padding: 5px 0;
+          background-color: #f8fbff;
+        }
+        
+        .bibtex-box {
+          display: inline-block;
+          background-color: #fff;
+          padding: 25px 50px 1px 1px;
+          border: 1px solid #f8fbff;
+          font-family: monospace;
+          overflow: auto;
+          text-align: left;
+        }
+        
+         .copy-button {
+          background-color: #e6f0ff;
+          border-color: #e6f0ff;
+          font-weight: bold;
+          font-size: 14px;
+          margin-top: 10px;
+        }
+        
+        .copy-button:hover {
+          background-color: #cde1ff;
+          border-color: #cde1ff;
+          cursor: pointer;
+        }
+        
 	</style>
 </head>
 <body>
 	<header>
-		<h1>Title of the Paper</h1>
-		<p>Authors: First Author, Second Author, Third Author</p>
-		<p>Author Affiliations: Department of Computer Science, University of X</p>
-		<p>arXiv URL: <a href="https://arxiv.org/1234.56789">https://arxiv.org/1234.56789</a></p>
+		<h1>Continual Diffusion: Continual Customization of Text-to-Image Diffusion with C-LoRA</h1>
+	    <p>
+			<a href="https://jamessealesmith.github.io/" class="author"><b>James Seale Smith</b></a><sup>1,2</sup>, <a class="author"><b>Yen-Chang Hsu</b></a><sup>1</sup>, <a class="author"><b>Lingyu Zhang</b></a><sup>2</sup>, <a class="author"><b>Ting Hua</b></a><sup>2</sup>
+		</p>
+		<p>
+			 <a href="https://faculty.cc.gatech.edu/~zk15/" class="author"><b>Zsolt Kira</b></a><sup>1</sup>, <a class="author"><b>Yilin Shen</b></a><sup>2</sup>, <a class="author"><b>Hongxia Jin</b></a><sup>2</sup>
+		</p>
+		<p>
+			<sup>1</sup><b>Georgia Institute of Technology</b>,
+			<sup>2</sup><b>Samsung Research America</b>
+		</p>
+		<a href="https://jamessealesmith.github.io/" class="arxiv-link">paper</a>
 	</header>
 	<main>
+	    <figure>
+		<img src="use-case.pdf">
+		<figcaption>A use case of our work - a mobile app sequentially learns new customized concepts. At a later time, the user can generate photos of prior learned concepts. The user should be able to generate photos with multiple concepts together, thus ruling out simple methods such as per-concept adapters. Furthermore, the concepts are fine-grained, and simply learning new tokens or words is not effective.</figcaption>
+        </figure>
 		<h2>Abstract</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt nulla ut est volutpat, quis ultricies dolor euismod. Nunc pulvinar metus id nulla laoreet feugiat. Nulla consequat justo in metus rhoncus, nec malesuada nisi vestibulum. Nullam volutpat tempor erat, ac ullamcorper mauris eleifend sit amet. Aliquam erat volutpat. Suspendisse ac nulla libero. Donec bibendum dolor eu viverra varius.</p>
+		<hr style="background-color: #DDD; height: 1px; border: none; margin-top: 20px; margin-bottom: 20px;">
+		<h4>
+		    Recent works demonstrate a remarkable ability to customize text-to-image diffusion models while only providing a few example images. What happens if you try to customize such models using multiple, fine-grained concepts in a sequential (i.e., continual) manner? In our work, we show that recent state-of-the-art customization of text-to-image models suffer from catastrophic forgetting when new concepts arrive sequentially. Specifically, when adding a new concept, the ability to generate high quality images of past, similar concepts degrade. To circumvent this forgetting, we propose a new method, C-LoRA, composed of a continually self-regularized low-rank adaptation in cross attention layers of the popular Stable Diffusion model. Furthermore, we use customization prompts which do not include the word of the customized object (i.e., “person” for a human face dataset) and are initialized as completely random embeddings. Importantly, our method induces only marginal additional parameter costs and requires no storage of user data for replay. We show that C-LoRA not only outperforms several baselines for our proposed setting of text-to-image continual customization, which we refer to as Continual Diffusion, but that we achieve a new state-of-the-art in the well-established rehearsal-free continual learning setting for image classification. The high achieving performance of C-LoRA in two separate domains positions it as a compelling solution for a wide range of applications, and we believe it has significant potential for practical impact.
+		</h4>
+		<hr style="background-color: #DDD; height: 1px; border: none; margin-top: 20px; margin-bottom: 20px;">
+		<h2>Method</h2>
+		
+		<figure>
+		<img src="method.pdf">
+		<figcaption>Our method, C-LoRA, updates the key-value (K-V) projection in U-Net cross-attention modules of Stable Diffusion  using a continual, self-regulating low-rank weight adaptation. The past LoRA weight deltas are used to regulate the new LoRA weight deltas by guiding which parameters are most available to be updated. Unlike prior work, we initialize custom token embeddings as random features and remove the concept name (e.g., ``person'') from the prompt.</figcaption>
+        </figure>
+		
 		<h2>Results</h2>
-		<img src="figure1.png" alt="Caption for Figure 1">
-		<img src="figure2.png" alt="Caption for Figure 2">
-		<img src="figure3.png" alt="Caption for Figure 3">
+		
+		<figure>
+		<img src="celeb-a_results.pdf">
+		<figcaption>Qualitative results of continual customization using the Celeb-A HQ data. Results are shown for three concepts from the learning sequence sampled after training ten concepts sequentially.</figcaption>
+        </figure>
+
+        <figure>
+		<img src="waterfall_results.pdf">
+		<figcaption>Qualitative results of continual customization using waterfalls from the Google Landmarks dataset. Results are shown for three concepts from the learning sequence sampled after training ten concepts sequentially.</figcaption>
+        </figure>
+		
 		<h2>BibTeX</h2>
-		<pre>
-@article{Smith2023,
-  author    = {John Smith and Jane Doe},
-  title     = {Title of the Paper},
-  journal   = {Journal Name},
-  volume    = {X},
-  number    = {Y},
-  pages     = {Z},
-  year      = {2023},
-  publisher = {Publisher Name},
-}
-		</pre>
+		
+<section class="bibtex-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <div class="bibtex-box">
+              <pre id="bibtex-text">
+                @article{smith2022example,
+                  title={An Example Research Paper},
+                  author={Smith, James and Lee, John and Kim, Sarah and Patel, Ravi and Nguyen, Minh},
+                  journal={Journal of Example Research},
+                  year={2022}
+                }
+              </pre>
+            </div>
+            <button class="btn btn-primary copy-button" data-clipboard-target="#bibtex-text">
+              Copy BibTeX
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 	</main>
-	<footer>
-		<p>&copy; 2023 Authors Name</p>
-	</footer>
 </body>
 </html>
