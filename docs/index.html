@@ -5,20 +5,26 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
-	    
-    	h1 {text-align: center; margin: 10px auto;  margin: 10px auto;}
-        p {text-align: center; margin: 10px auto;  margin: 10px auto; }
-        h4 {text-align: justify;font-weight:normal; margin: 10px auto; }
-        div {text-align: center; margin: 10px auto;  margin: 10px auto; }
+	    @media only screen and (max-width: 600px) {
+  body {
+    width: 100%;
+  }
+}
+    	h1 {text-align: center;}
+        p {text-align: center;}
+        h4 {text-align: justify;font-weight:normal;}
+        div {text-align: center;}
 		body {
 			font-family: Arial, sans-serif;
 			margin: 0 auto;
 			padding: 0;
+			width:800px;
 			background-color: #f8fbff; /* light gray color */
 		}
 		h1, h2, h3 {
-			margin: 10px auto;
+			margin: 10px 0;
 			text-align: center;
+			width:800px;
 		}
 		.container {
           max-width: 800px;
@@ -91,11 +97,7 @@
           border-color: #cde1ff;
           cursor: pointer;
         }
-        @media only screen and (max-width: 800px) {
-          body {
-            width: 100%;
-          }
-        }
+        
 	</style>
 </head>
 <body>
