@@ -110,7 +110,7 @@
 	</header>
 	<main>
 	    <figure>
-		<img src="figures/use-case.png">
+		<img src="figures/use-case.png" width="50%">
 		<figcaption>A use case of our work - a mobile app sequentially learns new customized concepts. At a later time, the user can generate photos of prior learned concepts. The user should be able to generate photos with multiple concepts together, thus ruling out simple methods such as per-concept adapters. Furthermore, the concepts are fine-grained, and simply learning new tokens or words is not effective.</figcaption>
         </figure>
 		<h2>Abstract</h2>
@@ -122,19 +122,19 @@
 		<h2>Method</h2>
 		
 		<figure>
-		<embed src="figures/method.pdf" type="application/pdf" />
+		<img src="figures/method.png" width="80%">
 		<figcaption>Our method, C-LoRA, updates the key-value (K-V) projection in U-Net cross-attention modules of Stable Diffusion  using a continual, self-regulating low-rank weight adaptation. The past LoRA weight deltas are used to regulate the new LoRA weight deltas by guiding which parameters are most available to be updated. Unlike prior work, we initialize custom token embeddings as random features and remove the concept name (e.g., ``person'') from the prompt.</figcaption>
         </figure>
 		
 		<h2>Results</h2>
 		
 		<figure>
-		<embed src="celeb-a_results.pdf" type="application/pdf" />
+		<img src="celeb-a_results.png" width="80%">
 		<figcaption>Qualitative results of continual customization using the Celeb-A HQ data. Results are shown for three concepts from the learning sequence sampled after training ten concepts sequentially.</figcaption>
         </figure>
 
         <figure>
-		<embed src="waterfall_results.pdf" type="application/pdf" />
+		<img src="figures/waterfall_results.png" width="80%">
 		<figcaption>Qualitative results of continual customization using waterfalls from the Google Landmarks dataset. Results are shown for three concepts from the learning sequence sampled after training ten concepts sequentially.</figcaption>
         </figure>
 		
