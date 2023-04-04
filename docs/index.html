@@ -5,25 +5,31 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
-    	h1 {text-align: center;}
-        p {text-align: center;}
-        h4 {text-align: justify;font-weight:normal;}
-        div {text-align: center;}
+	    @media only screen and (max-width: 800px) {
+          body {
+            width: 100%;
+          }
+        }
+        p {text-align: center; margin: 10px auto;}
+        div {text-align: center; margin: 10px auto;}
 		body {
 			font-family: Arial, sans-serif;
 			margin: 0 auto;
 			padding: 0;
-			width:800px;
 			background-color: #f8fbff; /* light gray color */
 		}
-		h1, h2, h3 {
-			margin: 10px 0;
+		h1, h2, h3,h4 {
+			margin: 10px auto;
 			text-align: center;
-			width:800px;
+		}
+		h4 {
+			margin: 10px auto;
+			text-align: justify;
+			font-weight:normal;
 		}
 		.container {
           max-width: 800px;
-          margin: 0 auto;
+          margin: 10px auto;
           padding: 0 20px;
           box-sizing: border-box;
         }
@@ -73,10 +79,12 @@
           padding: 25px 50px 1px 1px;
           border: 1px solid #f8fbff;
           font-family: monospace;
-          overflow: auto;
           text-align: left;
           max-width: 90%;
-         word-wrap: break-word;
+          word-wrap: break-word;
+          margin: 0 auto;
+          overflow: auto;
+          overflow-x: auto;
         }
         
          .copy-button {
@@ -92,7 +100,11 @@
           border-color: #cde1ff;
           cursor: pointer;
         }
-        
+        @media only screen and (max-width: 800px) {
+          body {
+            width: 100%;
+          }
+        }
 	</style>
 </head>
 <body>
@@ -117,11 +129,9 @@
 		<figcaption>A use case of our work - a mobile app sequentially learns new customized concepts. At a later time, the user can generate photos of prior learned concepts. The user should be able to generate photos with multiple concepts together, thus ruling out simple methods such as per-concept adapters. Furthermore, the concepts are fine-grained, and simply learning new tokens or words is not effective.</figcaption>
         </figure>
 		<h2>Abstract</h2>
-		<hr style="background-color: #DDD; height: 1px; border: none; margin-top: 20px; margin-bottom: 20px;">
 		<h4>
 		    Recent works demonstrate a remarkable ability to customize text-to-image diffusion models while only providing a few example images. What happens if you try to customize such models using multiple, fine-grained concepts in a sequential (i.e., continual) manner? In our work, we show that recent state-of-the-art customization of text-to-image models suffer from catastrophic forgetting when new concepts arrive sequentially. Specifically, when adding a new concept, the ability to generate high quality images of past, similar concepts degrade. To circumvent this forgetting, we propose a new method, C-LoRA, composed of a continually self-regularized low-rank adaptation in cross attention layers of the popular Stable Diffusion model. Furthermore, we use customization prompts which do not include the word of the customized object (i.e., “person” for a human face dataset) and are initialized as completely random embeddings. Importantly, our method induces only marginal additional parameter costs and requires no storage of user data for replay. We show that C-LoRA not only outperforms several baselines for our proposed setting of text-to-image continual customization, which we refer to as Continual Diffusion, but that we achieve a new state-of-the-art in the well-established rehearsal-free continual learning setting for image classification. The high achieving performance of C-LoRA in two separate domains positions it as a compelling solution for a wide range of applications, and we believe it has significant potential for practical impact.
 		</h4>
-		<hr style="background-color: #DDD; height: 1px; border: none; margin-top: 20px; margin-bottom: 20px;">
 		<h2>Method</h2>
 		
 		<figure>
