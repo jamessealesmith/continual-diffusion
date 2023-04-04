@@ -138,18 +138,19 @@
 		<figcaption>Our method, C-LoRA, updates the key-value (K-V) projection in U-Net cross-attention modules of Stable Diffusion using a continual, self-regulating low-rank weight adaptation. The past LoRA weight deltas are used to regulate the new LoRA weight deltas by guiding which parameters are most available to be updated. Unlike prior work, we initialize custom tokens as random features and remove the concept name (e.g., "person") from the prompt.</figcaption>
         </figure>
 		<br>
-		<h2>Results</h2>
+		<h2>Results: Faces</h2>
 		
 		<figure>
 		<img src="figures/celeb-a_results.jpg" width="85%">
 		<figcaption>Qualitative results of continual customization using the Celeb-A HQ data. Results are shown for three concepts from the learning sequence sampled after training ten concepts sequentially.</figcaption>
         </figure>
-<br>
+        <br>
+		<h2>Results: Landmarks</h2>
         <figure>
 		<img src="figures/waterfall_results.jpg" width="85%">
 		<figcaption>Qualitative results of continual customization using waterfalls from the Google Landmarks dataset. Results are shown for three concepts from the learning sequence sampled after training ten concepts sequentially.</figcaption>
         </figure>
-		
+		<br>
 		<h2>BibTeX</h2>
 		
 <section class="bibtex-section">
