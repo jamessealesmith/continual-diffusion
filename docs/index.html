@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
     	h1 {text-align: center;}
-        p {text-align: center;}
+        p {text-align: center; margin: 0px ;}
         div {text-align: center;}
 		body {
 			font-family: Arial, sans-serif;
@@ -102,18 +102,22 @@
 </head>
 <body>
 	<header>
+	    <br>
 		<h1>Continual Diffusion: Continual Customization of Text-to-Image Diffusion with C-LoRA</h1>
+		<br>
 	    <p>
 			<a href="https://jamessealesmith.github.io/" class="author"><b>James Seale Smith</b></a><sup>1,2</sup>, <a class="author"><b>Yen-Chang Hsu</b></a><sup>1</sup>, <a class="author"><b>Lingyu Zhang</b></a><sup>1</sup>, <a class="author"><b>Ting Hua</b></a><sup>1</sup>
 		</p>
 		<p>
 			 <a href="https://faculty.cc.gatech.edu/~zk15/" class="author"><b>Zsolt Kira</b></a><sup>2</sup>, <a class="author"><b>Yilin Shen</b></a><sup>1</sup>, <a class="author"><b>Hongxia Jin</b></a><sup>1</sup>
 		</p>
+		<br>
 		<p>
 		    <sup>1</sup><b>Samsung Research America</b>,
 			<sup>2</sup><b>Georgia Institute of Technology</b>
 			
 		</p>
+		<br>
 		<a href="https://arxiv.org/list/cs/recent" class="arxiv-link">paper</a>
 	</header>
 	<main>
@@ -122,23 +126,25 @@
 		<figcaption>A use case of our work - a mobile app sequentially learns new customized concepts. At a later time, the user can generate photos of prior learned concepts. The user should be able to generate photos with multiple concepts together, thus ruling out simple methods such as per-concept adapters. Furthermore, the concepts are fine-grained, and simply learning new tokens or words is not effective.</figcaption>
         </figure>
 		<h2>Abstract</h2>
+		<br>
 		<h4>
 		    Recent works demonstrate a remarkable ability to customize text-to-image diffusion models while only providing a few example images. What happens if you try to customize such models using multiple, fine-grained concepts in a sequential (i.e., continual) manner? In our work, we show that recent state-of-the-art customization of text-to-image models suffer from catastrophic forgetting when new concepts arrive sequentially. Specifically, when adding a new concept, the ability to generate high quality images of past, similar concepts degrade. To circumvent this forgetting, we propose a new method, C-LoRA, composed of a continually self-regularized low-rank adaptation in cross attention layers of the popular Stable Diffusion model. Furthermore, we use customization prompts which do not include the word of the customized object (i.e., “person” for a human face dataset) and are initialized as completely random embeddings. Importantly, our method induces only marginal additional parameter costs and requires no storage of user data for replay. We show that C-LoRA not only outperforms several baselines for our proposed setting of text-to-image continual customization, which we refer to as Continual Diffusion, but that we achieve a new state-of-the-art in the well-established rehearsal-free continual learning setting for image classification. The high achieving performance of C-LoRA in two separate domains positions it as a compelling solution for a wide range of applications, and we believe it has significant potential for practical impact.
 		</h4>
+		<br>
 		<h2>Method</h2>
 		
 		<figure>
 		<img src="figures/method.jpg" width="100%">
 		<figcaption>Our method, C-LoRA, updates the key-value (K-V) projection in U-Net cross-attention modules of Stable Diffusion using a continual, self-regulating low-rank weight adaptation. The past LoRA weight deltas are used to regulate the new LoRA weight deltas by guiding which parameters are most available to be updated. Unlike prior work, we initialize custom tokens as random features and remove the concept name (e.g., "person") from the prompt.</figcaption>
         </figure>
-		
+		<br>
 		<h2>Results</h2>
 		
 		<figure>
 		<img src="figures/celeb-a_results.jpg" width="85%">
 		<figcaption>Qualitative results of continual customization using the Celeb-A HQ data. Results are shown for three concepts from the learning sequence sampled after training ten concepts sequentially.</figcaption>
         </figure>
-
+<br>
         <figure>
 		<img src="figures/waterfall_results.jpg" width="85%">
 		<figcaption>Qualitative results of continual customization using waterfalls from the Google Landmarks dataset. Results are shown for three concepts from the learning sequence sampled after training ten concepts sequentially.</figcaption>
@@ -187,7 +193,7 @@
   
 </section>
 
-    
+    <br>
 	</main>
 </body>
 </html>
