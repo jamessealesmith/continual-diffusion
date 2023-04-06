@@ -128,7 +128,8 @@
 	<main>
 	    <figure>
 		<img src="figures/use-case.gif" width="65%">
-		<figcaption>A use case of our work - a mobile app sequentially learns new customized concepts. At a later time, the user can generate photos of prior learned concepts. The user should be able to generate photos with multiple concepts together, thus ruling out simple methods such as per-concept adapters. Furthermore, the concepts are fine-grained, and simply learning new tokens or words is not effective.</figcaption>
+		<br>
+		<figcaption> <i>A use case of our work - a mobile app sequentially learns new customized concepts. At a later time, the user can generate photos of prior learned concepts. <b>The user should be able to generate photos with multiple concepts together</b>, thus ruling out methods such as per-concept adapters or single-image conditioned diffusion. Furthermore, the concepts are fine-grained, and simply learning new tokens or words is not effective.</i></figcaption>
         </figure>
 		<h2>Abstract</h2>
 		<br>
@@ -140,6 +141,7 @@
 		
 		<figure>
 		<img src="figures/method.jpg" width="100%">
+		<br>
 		<figcaption>Our method, C-LoRA, updates the key-value (K-V) projection in U-Net cross-attention modules of Stable Diffusion using a continual, self-regulating low-rank weight adaptation. The past LoRA weight deltas are used to regulate the new LoRA weight deltas by guiding which parameters are most available to be updated. Unlike prior work, we initialize custom tokens as random features and remove the concept name (e.g., "person") from the prompt.</figcaption>
         </figure>
 		<br>
@@ -147,12 +149,20 @@
 		
 		<figure>
 		<img src="figures/celeb-a_results.jpg" width="85%">
+		<br>
 		<figcaption>Qualitative results of continual customization using the Celeb-A HQ data. Results are shown for three concepts from the learning sequence sampled after training ten concepts sequentially.</figcaption>
+        </figure>
+        <br>
+        <figure>
+		<img src="figures/multi-concept-results.jpg" width="65%">
+		<br>
+		<figcaption>Multi-concept results after training on 10 sequential tasks using Celeb-A HQ. Using standard quadrant numbering (I is upper right, II is upper left, III is lower left, IV is lower right), we label which target data belongs in which generated image by directly annotating the target data images.</figcaption>
         </figure>
         <br>
 		<h2>Results: Landmarks</h2>
         <figure>
 		<img src="figures/waterfall_results.jpg" width="85%">
+		<br>
 		<figcaption>Qualitative results of continual customization using waterfalls from the Google Landmarks dataset. Results are shown for three concepts from the learning sequence sampled after training ten concepts sequentially.</figcaption>
         </figure>
 		<br>
